@@ -38,9 +38,7 @@ public class FigtherUnit : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Walk Forward", false);
-            animator.SetBool("Walk Backward", false);
-            isIdle = true;
+            Idle();
         }
         
     }
@@ -58,11 +56,18 @@ public class FigtherUnit : MonoBehaviour
 
     void MoveFoward()
     {
+        animator.SetBool("Walk Backward", false);
         animator.SetBool("Walk Forward", true);
     }
     void MoveBackward()
     {
-        isIdle = false;
+        animator.SetBool("Walk Forward", false);
         animator.SetBool("Walk Backward", true);
+    }
+    void Idle()
+    {
+        animator.SetBool("Walk Forward", false);
+        animator.SetBool("Walk Backward", false);
+        isIdle = true;
     }
 }
