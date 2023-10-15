@@ -4,70 +4,55 @@ using UnityEngine;
 
 public class FigtherUnit : MonoBehaviour
 {
-    public Animator animator;
+    [SerializeField]
+    private Animator animator;
 
-    private bool isIdle = true;
+   
 
     protected GameObject fighter { get; set; }
+    protected Rigidbody playerRb { private get; set; }
+
 
 
     // Start is called before the first frame update
     void Awake()
     {
         animator.Play("Idle");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {            
-            Punch();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Kick();
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            MoveFoward();
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            MoveBackward();
-        }
-        else
-        {
-            Idle();
-        }
         
     }
 
-    void Punch()
+   
+
+    public virtual void Punch()
     {
         
         animator.SetTrigger("PunchTrigger");
     }
 
-    void Kick()
+    public virtual void Kick()
     {
         animator.SetTrigger("KickTrigger");
     }
 
-    void MoveFoward()
+    public virtual void MoveFoward()
     {
         animator.SetBool("Walk Backward", false);
         animator.SetBool("Walk Forward", true);
     }
-    void MoveBackward()
+    public virtual void MoveBackward()
     {
         animator.SetBool("Walk Forward", false);
         animator.SetBool("Walk Backward", true);
     }
-    void Idle()
+    public virtual void Idle()
     {
         animator.SetBool("Walk Forward", false);
         animator.SetBool("Walk Backward", false);
-        isIdle = true;
+        
+    }
+
+    public virtual void Jump()
+    {
+        
     }
 }
