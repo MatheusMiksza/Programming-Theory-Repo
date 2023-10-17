@@ -621,9 +621,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0008017072
-  m_Height: 0.00346908
+  m_Height: 0.004107958
   m_Direction: 1
-  m_Center: {x: -0.00016065566, y: 0.0018268316, z: 0.00011684115}
+  m_Center: {x: -0.0001606548, y: 0.0021462683, z: 0.000116841176}
 --- !u!1 &1137575110895896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,7 +2296,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899971903572186}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 755f293817d7a2240b6cfff860f9c11e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2445,6 +2445,7 @@ GameObject:
   - component: {fileID: 3460110857367798753}
   - component: {fileID: 165180383469148395}
   - component: {fileID: 305011580643148136}
+  - component: {fileID: 4884048996209709140}
   m_Layer: 0
   m_Name: Jiantou
   m_TagString: Player
@@ -2550,9 +2551,30 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.41626108
-  m_Height: 3.2897353
+  m_Height: 2.535088
   m_Direction: 1
-  m_Center: {x: -0.062096834, y: 2.5601351, z: 0.90999997}
+  m_Center: {x: -0.062096834, y: 2.9374588, z: 0.72}
+--- !u!65 &4884048996209709140
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975490748896872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 4.43, z: 1}
+  m_Center: {x: 0, y: 2.52, z: -0.47}
 --- !u!1 &1983835333650560
 GameObject:
   m_ObjectHideFlags: 0

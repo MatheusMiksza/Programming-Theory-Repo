@@ -401,12 +401,18 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: Motion
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'B_L_Thigh'
+      : position error = 35.015522 mm\n\t'B_L_Calf' : position error = 50.316811
+      mm\n\t'B_L_Foot' : position error = 144.018570 mm\n\t'B_L_Toe0' : position
+      error = 93.819016 mm\n\t'B_R_Thigh' : position error = 35.015415 mm\n\t'B_R_Calf'
+      : position error = 50.316868 mm\n\t'B_R_Foot' : position error = 144.018600
+      mm\n\t'B_R_Toe0' : position error = 93.819046 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'B_Spine' has translation animation that
-      will be discarded.\n"
+      will be discarded.\n\t'B_Spine1' has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -443,14 +449,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.64204544
-        functionName: Land
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
@@ -567,8 +566,8 @@ ModelImporter:
       name: Land
       takeName: Take 001
       internalID: -7497848331705974981
-      firstFrame: 21
-      lastFrame: 35
+      firstFrame: 23
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

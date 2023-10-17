@@ -14,6 +14,7 @@ public class Player01 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerController.Punch();
@@ -21,6 +22,15 @@ public class Player01 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             playerController.Kick();
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+           playerController.Crounch(true);
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            playerController.Crounch(false);
+
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -33,6 +43,7 @@ public class Player01 : MonoBehaviour
         else
         {
             playerController.Idle();
+            
         }
     }
     
