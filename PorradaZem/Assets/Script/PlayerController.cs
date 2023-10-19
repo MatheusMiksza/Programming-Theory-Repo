@@ -29,9 +29,8 @@ public class PlayerController : FigtherUnit
         
         if (collision.transform.root.name != gameObject.transform.root.name)
         {            
-            if (collision.gameObject.CompareTag("Kick"))
-            {
-               
+            if (collision.gameObject.CompareTag("Kick") || collision.gameObject.CompareTag("Punch"))
+            {               
                 Hit(-15);
             }
         }
