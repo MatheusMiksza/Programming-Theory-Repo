@@ -5,11 +5,19 @@ using UnityEngine;
 public class PlayerController : FigtherUnit
 {
     private float fixX = 0;
+    [SerializeField]
+    private float punchHit;
+    [SerializeField]
+    private float kickHit;
+
+    private string enemy;
     private void Start()
     {
+        enemy = this.gameObject.transform.root.name == "Player01"? "Player01": "Player02";
         fighter = this.gameObject;
         playerRb = this.gameObject.GetComponent<Rigidbody>();
         playerCollider = this.gameObject.GetComponent<CapsuleCollider>();
+        player02Controller = GameObject.Find(enemy).GetComponentInChildren<PlayerController>();
     }
 
     private void Update()
@@ -31,7 +39,7 @@ public class PlayerController : FigtherUnit
         {            
             if (collision.gameObject.CompareTag("Kick") || collision.gameObject.CompareTag("Punch"))
             {               
-                Hit(-15);
+                Hit(collision.gameObject.CompareTag("Kick")? player02Controller.kickHit: player02Controller.punchHit);
             }
         }
         if (collision.transform.root.name == "Grid")

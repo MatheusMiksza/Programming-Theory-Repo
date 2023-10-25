@@ -6,6 +6,8 @@ public class FigtherUnit : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
+    
+    protected PlayerController player02Controller { get; set; }
 
     protected Rigidbody playerRb { get; set; }
     protected CapsuleCollider playerCollider;
