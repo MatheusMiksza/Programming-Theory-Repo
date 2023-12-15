@@ -11,6 +11,8 @@ public class PlayerController : FigtherUnit
     private float kickHit;
 
     private string enemy;
+
+   
     private void Start()
     {
         enemy = this.gameObject.transform.root.name == "Player01"? "Player01": "Player02";
@@ -38,7 +40,8 @@ public class PlayerController : FigtherUnit
         if (collision.transform.root.name != gameObject.transform.root.name)
         {            
             if (collision.gameObject.CompareTag("Kick") || collision.gameObject.CompareTag("Punch"))
-            {               
+            {
+                HitParticles(collision);  
                 Hit(collision.gameObject.CompareTag("Kick")? player02Controller.kickHit: player02Controller.punchHit);
             }
         }

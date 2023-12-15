@@ -6,13 +6,16 @@ public class FigtherUnit : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
-    
+    [SerializeField]
+    private ParticleSystem hitParticle;
+
     protected PlayerController player02Controller { get; set; }
 
     protected Rigidbody playerRb { get; set; }
     protected CapsuleCollider playerCollider;
     private float life = 100;
     protected GameObject fighter { get; set; }
+
 
     protected bool isGround = true;
     public bool gameOver { get; private set; }
@@ -77,7 +80,11 @@ public class FigtherUnit : MonoBehaviour
         animator.SetBool("Walk Backward", false);
         playerCollider.isTrigger = b;
     }
-
+    public void HitParticles(Collision collision)
+    {
+        hitParticle.transform.position = collision.transform.position;
+        hitParticle.Play();
+    }
     public void Hit(float hit)
     {
         
