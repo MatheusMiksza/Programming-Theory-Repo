@@ -59,12 +59,10 @@ public class CameraControl : MonoBehaviour {
 		Vector3 player1 = players[0].transform.position;
 		Vector3 player2 = players[1].transform.position;
 
-		var mid = (player2.z + player1.z) / 2;
-		
-		var dist = Vector3.Distance(player1, player2);
+		var mid = (player2.z + player1.z) / 2;	
 
 
 		transform.position = new Vector3(4,2, mid);
-		Debug.Log(dist);
+		
 	}
 }

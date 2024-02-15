@@ -13,6 +13,8 @@ public class PlayerController : FigtherUnit
     private string enemy;
 
    
+
+   
     private void Start()
     {
         enemy = this.gameObject.transform.root.name == "Player01"? "Player01": "Player02";
@@ -20,12 +22,16 @@ public class PlayerController : FigtherUnit
         playerRb = this.gameObject.GetComponent<Rigidbody>();
         playerCollider = this.gameObject.GetComponent<CapsuleCollider>();
         player02Controller = GameObject.Find(enemy).GetComponentInChildren<PlayerController>();
+        enenyPos = gameObject.transform.localPosition;
+        
+
     }
 
     private void Update()
     {
         if (transform.position.x != fixX) FixaPos(new Vector3(fixX, transform.position.y, transform.position.z));
         if (transform.position.x < fixX) FixaPos(new Vector3(fixX, fixX, transform.position.z));
+        
     }
 
     private void FixaPos(Vector3 pos)

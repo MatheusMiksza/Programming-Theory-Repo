@@ -15,6 +15,7 @@ public class FigtherUnit : MonoBehaviour
     protected CapsuleCollider playerCollider;
     private float life = 100;
     protected GameObject fighter { get; set; }
+    public Vector3 enenyPos;
 
 
     protected bool isGround = true;
@@ -26,6 +27,9 @@ public class FigtherUnit : MonoBehaviour
                         else life = value; 
                         } }
     private float impulse = 35;
+
+    public float distance { get; private set; }
+    private float maxDist = 10f;
 
 
     // Start is called before the first frame update
@@ -46,7 +50,8 @@ public class FigtherUnit : MonoBehaviour
 
     public virtual void MoveFoward()
     {
-        if (isGround)
+        SetDistance();
+        if (isGround && distance < maxDist)
         {
             animator.SetBool("Walk Backward", false);
             animator.SetBool("Walk Forward", true);           
@@ -54,7 +59,8 @@ public class FigtherUnit : MonoBehaviour
     }
     public virtual void MoveBackward()
     {
-        if (isGround)
+        SetDistance();
+        if (isGround && distance < maxDist)
         {
             animator.SetBool("Walk Forward", false);
             animator.SetBool("Walk Backward", true);            
@@ -110,4 +116,12 @@ public class FigtherUnit : MonoBehaviour
         p_life += hit;
     }
 
+    public void SetDistance()
+    {
+       
+       
+
+        distance = Vector3.Distance(transform.position, enenyPos);
+        Debug.Log(enenyPos);
+    }
 }
