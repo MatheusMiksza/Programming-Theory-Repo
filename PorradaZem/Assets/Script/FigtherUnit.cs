@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class FigtherUnit : MonoBehaviour
 {
@@ -8,12 +10,16 @@ public class FigtherUnit : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private ParticleSystem hitParticle;
+    
+   
 
+    
     protected PlayerController player02Controller { get; set; }
 
     protected Rigidbody playerRb { get; set; }
     protected CapsuleCollider playerCollider;
     private float life = 100;
+    public Slider lifeBar;
     protected GameObject fighter { get; set; }
     public Vector3 enenyPos;
 
@@ -30,28 +36,32 @@ public class FigtherUnit : MonoBehaviour
 
     public float distance { get; private set; }
     private float maxDist = 10f;
+    public GameManager gameManager { get; private set; }
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         animator.Play("Idle");      
         gameOver = false;
         
     }
     public virtual void Punch()
-    {       
-        animator.SetTrigger("PunchTrigger");        
+    {
+        if (gameManager.isGameActive)
+            animator.SetTrigger("PunchTrigger");        
     }
     public virtual void Kick()
     {
-        animator.SetTrigger("KickTrigger");
+        if (gameManager.isGameActive)
+            animator.SetTrigger("KickTrigger");
     }
 
     public virtual void MoveFoward()
     {
         SetDistance();
-        if (isGround && distance < maxDist)
+        if (isGround && distance < maxDist && gameManager.isGameActive)
         {
             animator.SetBool("Walk Backward", false);
             animator.SetBool("Walk Forward", true);           
@@ -60,7 +70,7 @@ public class FigtherUnit : MonoBehaviour
     public virtual void MoveBackward()
     {
         SetDistance();
-        if (isGround && distance < maxDist)
+        if (isGround && distance < maxDist && gameManager.isGameActive)
         {
             animator.SetBool("Walk Forward", false);
             animator.SetBool("Walk Backward", true);            
@@ -105,23 +115,42 @@ public class FigtherUnit : MonoBehaviour
 
     private void Stuned(bool b)
     {
-        if(p_life <= 0 && animator.GetBool("Stuned"))
+        if (p_life <= 0 && animator.GetBool("Stuned"))
+        {
             animator.SetBool("GameOver", b);
+            gameManager.GameOver();
+        }
         else
             animator.SetBool("Stuned", b);
     }
-    
+    public void IniciaLifeBar(Slider bar)
+    {
+        lifeBar = bar;
+        lifeBar.value = p_life;
+        lifeBar.gameObject.SetActive(true);
+    }
+
     public void AddLife(float hit)
     {
         p_life += hit;
+        lifeBar.value = p_life;
     }
 
     public void SetDistance()
-    {
-       
-       
+    {      
 
         distance = Vector3.Distance(transform.position, enenyPos);
         Debug.Log(enenyPos);
     }
+
+    public virtual string GetName()
+    {
+        return "FigthUnit";
+    }
+
+    public virtual string GetData()
+    {
+        return "";
+    }
+
 }

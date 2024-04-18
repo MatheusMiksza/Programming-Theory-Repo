@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : FigtherUnit
 {
@@ -12,9 +13,9 @@ public class PlayerController : FigtherUnit
 
     private string enemy;
 
-   
 
-   
+
+
     private void Start()
     {
         enemy = this.gameObject.transform.root.name == "Player01"? "Player01": "Player02";
@@ -23,6 +24,7 @@ public class PlayerController : FigtherUnit
         playerCollider = this.gameObject.GetComponent<CapsuleCollider>();
         player02Controller = GameObject.Find(enemy).GetComponentInChildren<PlayerController>();
         enenyPos = gameObject.transform.localPosition;
+       
         
 
     }
@@ -55,6 +57,13 @@ public class PlayerController : FigtherUnit
             IsGround(true); 
     }
 
-    
+    public void CriaLifeBar(Slider bar)
+    {
+        IniciaLifeBar(bar);
+    }
 
+    public override string GetName()
+    {
+        return $"{gameObject.name}";
+    }
 }
