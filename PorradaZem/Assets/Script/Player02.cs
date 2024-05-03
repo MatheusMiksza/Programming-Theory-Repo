@@ -8,7 +8,7 @@ public class Player02 : MonoBehaviour
     private PlayerController playerController;
 
 
-    private void Awake()
+    private void Start()
     {
         playerController = gameObject.GetComponentsInChildren<PlayerController>()[0];
     }

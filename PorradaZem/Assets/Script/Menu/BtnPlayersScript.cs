@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BtnPlayScript : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {

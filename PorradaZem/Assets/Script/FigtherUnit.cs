@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -36,32 +37,36 @@ public class FigtherUnit : MonoBehaviour
 
     public float distance { get; private set; }
     private float maxDist = 10f;
-    public GameManager gameManager { get; private set; }
+    public MainManager mainManager { get; private set; }
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        animator.Play("Idle");      
-        gameOver = false;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+            animator.Play("Idle");
+            gameOver = false;
+        }
+        
         
     }
     public virtual void Punch()
     {
-        if (gameManager.isGameActive)
+        if (mainManager.isGameActive)
             animator.SetTrigger("PunchTrigger");        
     }
     public virtual void Kick()
     {
-        if (gameManager.isGameActive)
+        if (mainManager.isGameActive)
             animator.SetTrigger("KickTrigger");
     }
 
     public virtual void MoveFoward()
     {
         SetDistance();
-        if (isGround && distance < maxDist && gameManager.isGameActive)
+        if (isGround && distance < maxDist && mainManager.isGameActive)
         {
             animator.SetBool("Walk Backward", false);
             animator.SetBool("Walk Forward", true);           
@@ -70,7 +75,7 @@ public class FigtherUnit : MonoBehaviour
     public virtual void MoveBackward()
     {
         SetDistance();
-        if (isGround && distance < maxDist && gameManager.isGameActive)
+        if (isGround && distance < maxDist && mainManager.isGameActive)
         {
             animator.SetBool("Walk Forward", false);
             animator.SetBool("Walk Backward", true);            
@@ -118,7 +123,7 @@ public class FigtherUnit : MonoBehaviour
         if (p_life <= 0 && animator.GetBool("Stuned"))
         {
             animator.SetBool("GameOver", b);
-            gameManager.GameOver();
+            mainManager.GameOver();
         }
         else
             animator.SetBool("Stuned", b);

@@ -7,77 +7,31 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private Canvas canvasGame;   
-    [SerializeField]
-    private GameObject plyer01;
-    [SerializeField]
-    private GameObject plyer02;
-    [SerializeField]
-    private Slider[] lifeBars;
 
-    GameObject[] players;
-    private int timer = 60;
-    public bool isGameActive { get; private set; }
+    public static GameManager Instance;
+    public GameObject p1 { get; private set; }
+    public GameObject p2 { get; private set; }
 
-    private MainUIHandler mainUIHandler;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        mainUIHandler = canvasGame.GetComponent<MainUIHandler>();
-        mainUIHandler.setTimer(timer.ToString());
-        StartGame();
-    }
-
-    void StartGame()
-    {
-        isGameActive = true;
-        SetLifeBar();
-        StartCoroutine(Cronometro());
-        mainUIHandler.InterfaceGame(true);
-    }
-
-    IEnumerator Cronometro()
-    {
-        while (isGameActive)
+        if (Instance != null)
         {
-            yield return new WaitForSeconds(1);
-            timer--;
-            if (timer < 0) GameOver();
-            mainUIHandler.setTimer($"{timer}");
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
     }
 
-    void SetLifeBar()
+    public void SetP1(GameObject p)
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        for(int i = 0;i< players.Length;i++)
-        {
-            players[i].GetComponent<PlayerController>().CriaLifeBar(lifeBars[i]);
-        }
+        p1 = p;
     }
-
-    public void SetParent(Slider slider)
+    public void SetP2(GameObject p)
     {
-        slider.transform.SetParent(canvasGame.transform,true);
-    }
-
-    string Winner()
-    {
-        PlayerController p1 = players[0].GetComponent<PlayerController>();
-        PlayerController p2 = players[1].GetComponent<PlayerController>();
-
-        if (p1.p_life > p2.p_life) return p1.GetName(); 
-        else if (p1.p_life < p2.p_life) return p2.GetName(); 
-        else return "Embate!"; 
-        
-    }
-
-    public void GameOver()
-    {
-        canvasGame.GetComponent<MainUIHandler>().GameOver(true, Winner());
-        isGameActive = false;
-        //timer = 60;
+        p2 = p;
     }
 
 
@@ -85,5 +39,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public enum Scenas
+    {
+        menu=0,
+        main=1
+
     }
 }
