@@ -11,6 +11,7 @@ public class FigtherUnit : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private ParticleSystem hitParticle;
+    private CharacterController character;
     
    
 
@@ -23,6 +24,7 @@ public class FigtherUnit : MonoBehaviour
     public Slider lifeBar;
     protected GameObject fighter { get; set; }
     public Vector3 enenyPos;
+    private Vector3 input;
 
 
     protected bool isGround = true;
@@ -43,11 +45,12 @@ public class FigtherUnit : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
             animator.Play("Idle");
             gameOver = false;
+            character = GetComponent<CharacterController>();
         }
         
         
@@ -61,6 +64,15 @@ public class FigtherUnit : MonoBehaviour
     {
         if (mainManager.isGameActive)
             animator.SetTrigger("KickTrigger");
+    }
+    public void Move(float value)
+    {
+        input.Set(0, 0, value);
+        character.Move(input * Time.deltaTime * 2);
+
+        if (value > 0) MoveFoward();
+        else MoveBackward();
+
     }
 
     public virtual void MoveFoward()
@@ -106,7 +118,7 @@ public class FigtherUnit : MonoBehaviour
         hitParticle.transform.position = collision.transform.position;
         hitParticle.Play();
     }
-    public void Hit(float hit)
+    public void HitPlayer(float hit)
     {
         
         animator.SetTrigger("Hit");

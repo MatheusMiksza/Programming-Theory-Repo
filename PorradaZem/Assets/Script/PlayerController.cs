@@ -19,7 +19,7 @@ public class PlayerController : FigtherUnit
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if(SceneManager.GetActiveScene().buildIndex != 0)
         {
             enemy = this.gameObject.transform.root.name == "Player01" ? "Player01" : "Player02";
             fighter = this.gameObject;
@@ -36,7 +36,7 @@ public class PlayerController : FigtherUnit
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().rootCount == 1)
+        if (SceneManager.GetActiveScene().rootCount != 1)
         {
             if (transform.position.x != fixX) FixaPos(new Vector3(fixX, transform.position.y, transform.position.z));
             if (transform.position.x < fixX) FixaPos(new Vector3(fixX, fixX, transform.position.z));
@@ -50,14 +50,14 @@ public class PlayerController : FigtherUnit
 
 
     private void OnCollisionEnter(Collision collision)
-    {
+     {
         
         if (collision.transform.root.name != gameObject.transform.root.name)
         {            
             if (collision.gameObject.CompareTag("Kick") || collision.gameObject.CompareTag("Punch"))
             {
                 HitParticles(collision);  
-                Hit(collision.gameObject.CompareTag("Kick")? player02Controller.kickHit: player02Controller.punchHit);
+                HitPlayer(collision.gameObject.CompareTag("Kick")? player02Controller.kickHit: player02Controller.punchHit);
             }
         }
         if (collision.transform.root.name == "Grid")

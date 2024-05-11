@@ -26,6 +26,8 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+       
+
         mainUIHandler = canvasGame.GetComponent<MainUIHandler>();
         mainUIHandler.setTimer(timer.ToString());
         SetPlayers();
