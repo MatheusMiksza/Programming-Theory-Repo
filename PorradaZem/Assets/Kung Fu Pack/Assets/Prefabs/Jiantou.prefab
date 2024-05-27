@@ -2446,6 +2446,7 @@ GameObject:
   - component: {fileID: 3460110857367798753}
   - component: {fileID: 165180383469148395}
   - component: {fileID: 7192232369838015444}
+  - component: {fileID: 4315380740050815315}
   m_Layer: 0
   m_Name: Jiantou
   m_TagString: Player
@@ -2535,7 +2536,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!143 &7192232369838015444
 CharacterController:
@@ -2554,7 +2555,7 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 3.83
   m_Radius: 1.03
@@ -2563,6 +2564,29 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2.08, z: 0.27}
+--- !u!136 &4315380740050815315
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975490748896872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.48896074
+  m_Height: 3.0709949
+  m_Direction: 1
+  m_Center: {x: -0.062096834, y: 2.6695054, z: 1.0126996}
 --- !u!1 &1983835333650560
 GameObject:
   m_ObjectHideFlags: 0

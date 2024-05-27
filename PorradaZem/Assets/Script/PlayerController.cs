@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+
+// INHERITANCE
+// HERDANDO A CLASSE FigtherUnit POSSO ACESSAR OS COMANDO SO PERSONAGEM PASSANDO DIFERENTES VALORES DE DANO
 public class PlayerController : FigtherUnit
 {
     private float fixX = 0;
@@ -36,11 +40,12 @@ public class PlayerController : FigtherUnit
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().rootCount != 1)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (transform.position.x != fixX) FixaPos(new Vector3(fixX, transform.position.y, transform.position.z));
             if (transform.position.x < fixX) FixaPos(new Vector3(fixX, fixX, transform.position.z));
         }
+        
     }
 
     private void FixaPos(Vector3 pos)
@@ -68,7 +73,7 @@ public class PlayerController : FigtherUnit
     {
         IniciaLifeBar(bar);
     }
-
+    // POLYMORPHISM
     public override string GetName()
     {
         return $"{gameObject.name.Split('(')[0]}";

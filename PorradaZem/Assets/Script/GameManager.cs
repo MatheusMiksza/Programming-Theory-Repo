@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance;
+    // ENCAPSULATION
     public GameObject p1 { get; private set; }
     public GameObject p2 { get; private set; }
 

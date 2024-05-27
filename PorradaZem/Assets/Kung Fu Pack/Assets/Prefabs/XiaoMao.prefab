@@ -507,12 +507,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.41626108
   m_Height: 1.9098644
   m_Direction: 1
-  m_Center: {x: -0.062096834, y: 3.2500706, z: 0.93999994}
+  m_Center: {x: -0.062096834, y: 3.15, z: 0.93999994}
 --- !u!54 &769012872466768722
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -538,7 +538,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!143 &7678932246212999142
 CharacterController:
@@ -557,7 +557,7 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 3.83
   m_Radius: 1.03
@@ -702,12 +702,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0008017072
-  m_Height: 0.0044693747
+  m_Radius: 0.0015038511
+  m_Height: 0.00564685
   m_Direction: 1
-  m_Center: {x: -0.00016065482, y: 0.002326975, z: 0.000116841264}
+  m_Center: {x: 0.00054148986, y: 0.002915716, z: 0.00011684134}
 --- !u!1 &118730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,9 +1634,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0008017072
-  m_Height: 0.0045370255
+  m_Height: 0.0054030325
   m_Direction: 1
-  m_Center: {x: -0.00016065479, y: 0.0023608012, z: 0.00011684127}
+  m_Center: {x: -0.00016065476, y: 0.0027938094, z: 0.00011684148}
 --- !u!1 &153846
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+// INHERITANCE
+// CLASSE PAI
 public class FigtherUnit : MonoBehaviour
 {
     [SerializeField]
@@ -12,10 +14,10 @@ public class FigtherUnit : MonoBehaviour
     [SerializeField]
     private ParticleSystem hitParticle;
     private CharacterController character;
-    
-   
 
-    
+
+
+    // ENCAPSULATION
     protected PlayerController player02Controller { get; set; }
 
     protected Rigidbody playerRb { get; set; }
@@ -55,6 +57,7 @@ public class FigtherUnit : MonoBehaviour
         
         
     }
+    // POLYMORPHISM
     public virtual void Punch()
     {
         if (mainManager.isGameActive)

@@ -16,7 +16,7 @@ public class MainManager : MonoBehaviour
     private GameObject P2;
 
     GameObject[] players;
-    
+    // ENCAPSULATION
     public bool isGameActive { get; private set; }
     private int timer = 60;
     private MainUIHandler mainUIHandler;
